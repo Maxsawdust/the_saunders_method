@@ -1,0 +1,29 @@
+/* See the Tailwind configuration guide for advanced usage
+   https://tailwindcss.com/docs/configuration */
+
+@import 'tailwindcss' source(none);
+@source "../css";
+@source "../js";
+@source "../vue";
+@source "../../lib/phx_vue_web";
+
+/* A Tailwind plugin that makes "hero-#{ICON}" classes available.
+   The heroicons installation itself is managed by your mix.exs */
+@plugin "../vendor/heroicons";
+
+@theme {
+  --color-accent: #ffdbb5;
+  --color-accent-vibrant: #fcc286;
+  --color-accent-secondary: #ebf7f5;
+  --color-light: #fafafa;
+  --color-dark: #3b3b3b;
+  --color-dark-muted: #b4b4b4;
+}
+
+:root {
+  --color-accent: #ffdbb5;
+  --color-accent-vibrant: #fcc286;
+  --color-light: #fafafa;
+  --color-dark: #3b3b3b;
+  --color-dark-muted: #b4b4b4;
+}
