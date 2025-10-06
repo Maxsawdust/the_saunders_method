@@ -17,6 +17,7 @@
   --color-accent-secondary: #ebf7f5;
   --color-light: #fafafa;
   --color-dark: #3b3b3b;
+  --color-dark-semi-muted: #6b6b6b;
   --color-dark-muted: #b4b4b4;
 }
 
@@ -25,5 +26,22 @@
   --color-accent-vibrant: #fcc286;
   --color-light: #fafafa;
   --color-dark: #3b3b3b;
+  --color-dark-semi-muted: #646464;
   --color-dark-muted: #b4b4b4;
+}
+
+#method-container {
+  z-index: 1;
+}
+
+#method-container::before {
+  content: '';
+  position: absolute;
+  background-color: black;
+  opacity: 50%;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }

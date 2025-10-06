@@ -5,6 +5,7 @@ import TabBody from './structural/TabBody.vue';
 
 import Tab from '../types/Tab';
 import { computed, provide } from 'vue';
+import Subtitle from './structural/Subtitle.vue';
 
 const props = defineProps<{
   tabs_state: { tabs: Tab[]; total_tabs: Number };
@@ -23,10 +24,14 @@ console.log(activeTab);
     class="w-full h-120 py-2 bg-accent rounded-xl flex flex-col items-center"
   >
     <h1 class="text-2xl">EDIT METHOD HEADER</h1>
+
     <!---->
+
     <div
-      class="relative bg-light min-h-[70%] w-[95%] my-auto rounded-l flex justify-center items-center"
+      class="relative bg-light min-h-[70%] w-[95%] pt-5 px-8 my-auto rounded-l flex flex-col justify-center items-center"
     >
+      <!---->
+
       <div
         id="tab header"
         class="absolute top-[-40px] w-full h-10 gap-1 flex items-center"
