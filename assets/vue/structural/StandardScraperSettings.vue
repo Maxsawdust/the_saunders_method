@@ -1,0 +1,9 @@
+<script setup lang="ts">
+const props = defineProps();
+</script>
+
+<template>
+  <h1>Standard</h1>
+</template>
+
+<style scoped></style>

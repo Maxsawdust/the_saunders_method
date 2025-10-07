@@ -21,7 +21,10 @@ defmodule PhxVueWeb.PageLive do
         new_tab = %Tab{
           title: "New",
           method_type: nil,
-          settings_map: %MethodSettings{http_method_type: "get"},
+          settings_map: %MethodSettings{
+            http_method_type: "get",
+            scraping_worker: :standard
+          },
           active: true,
           id: next_id
         }
@@ -95,6 +98,7 @@ defmodule PhxVueWeb.PageLive do
 
     {:noreply, socket}
   end
+
   def handle_event("http_method_changed", %{"_target" => ["http_method_toggle"]}, socket) do
     socket =
       update(socket, :tabs_state, fn state ->
@@ -109,6 +113,52 @@ defmodule PhxVueWeb.PageLive do
 
         %{state | tabs: updated_state}
       end)
+
+    {:noreply, socket}
+  end
+
+  def handle_event("proxy-radio-changed-standard", _value, socket) do
+    socket = update(socket, :tabs_state, fn state ->
+      updated_state =
+        Enum.map(state.tabs, fn
+          %{active: true} = tab ->
+            %{tab | settings_map: %{tab.settings_map | scraping_worker: :standard}}
+          tab ->
+            tab
+          end)
+
+      %{state | tabs: updated_state}
+    end)
+
+    {:noreply, socket}
+  end
+  def handle_event("proxy-radio-changed-scraping-bee", _value, socket) do
+    socket = update(socket, :tabs_state, fn state ->
+      updated_state =
+        Enum.map(state.tabs, fn
+          %{active: true} = tab ->
+            %{tab | settings_map: %{tab.settings_map | scraping_worker: :scraping_bee}}
+          tab ->
+            tab
+          end)
+
+      %{state | tabs: updated_state}
+    end)
+
+    {:noreply, socket}
+  end
+  def handle_event("proxy-radio-changed-oxylabs", _value, socket) do
+        socket = update(socket, :tabs_state, fn state ->
+      updated_state =
+        Enum.map(state.tabs, fn
+          %{active: true} = tab ->
+            %{tab | settings_map: %{tab.settings_map | scraping_worker: :oxylabs}}
+          tab ->
+            tab
+          end)
+
+      %{state | tabs: updated_state}
+    end)
 
     {:noreply, socket}
   end

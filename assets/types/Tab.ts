@@ -3,6 +3,7 @@ type Tab = {
   method_type: string;
   settings_map: {
     http_method_type: string;
+    scraping_worker: string;
   };
   active: boolean;
   id: number;

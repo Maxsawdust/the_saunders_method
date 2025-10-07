@@ -13,7 +13,6 @@ const props = defineProps<{
   size?: SizePattern;
   name: string;
   onChange: string;
-  tab?: Tab;
 }>();
 
 const tabsState: any = inject('tabsState');

@@ -21,14 +21,14 @@ console.log(activeTab);
 
 <template>
   <div
-    class="w-full h-120 py-2 bg-accent rounded-xl flex flex-col items-center"
+    class="w-full min-h-120 py-4 bg-accent rounded-xl flex flex-col items-center justify-start"
   >
-    <h1 class="text-2xl">EDIT METHOD HEADER</h1>
+    <h1 class="text-2xl mb-2">EDIT METHOD HEADER</h1>
 
     <!---->
 
     <div
-      class="relative bg-light min-h-[70%] w-[95%] pt-5 px-8 my-auto rounded-l flex flex-col justify-center items-center"
+      class="relative bg-light min-h-80 w-[95%] pt-5 px-8 my-auto rounded-l flex flex-col justify-center items-center"
     >
       <!---->
 
