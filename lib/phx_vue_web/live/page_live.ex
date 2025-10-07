@@ -23,7 +23,9 @@ defmodule PhxVueWeb.PageLive do
           method_type: nil,
           settings_map: %MethodSettings{
             http_method_type: "get",
-            scraping_worker: :standard
+            scraping_worker: :standard,
+            proxy_type: nil,
+            proxy_location: nil
           },
           active: true,
           id: next_id
@@ -160,6 +162,36 @@ defmodule PhxVueWeb.PageLive do
       %{state | tabs: updated_state}
     end)
 
+    {:noreply, socket}
+  end
+
+  def handle_event("proxy-rack-enabled", %{"proxy-rack-toggle" => _value}, socket) do
+    socket =
+      update(socket, :tabs_state, fn state ->
+        %{state | tabs:
+          Enum.map(state.tabs, fn
+            %{active: true} = tab ->
+              %{tab | settings_map: %{tab.settings_map | proxy_type: :proxy_rack}}
+            tab ->
+              tab
+          end)
+        }
+      end)
+
+    {:noreply, socket}
+  end
+    def handle_event("proxy-rack-enabled", %{"_target" => ["proxy-rack-toggle"]}, socket) do
+      socket =
+      update(socket, :tabs_state, fn state ->
+        %{state | tabs:
+          Enum.map(state.tabs, fn
+            %{active: true} = tab ->
+              %{tab | settings_map: %{tab.settings_map | proxy_type: nil}}
+            tab ->
+              tab
+          end)
+        }
+      end)
     {:noreply, socket}
   end
 end

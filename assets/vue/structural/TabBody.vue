@@ -91,11 +91,11 @@ console.log(workerType);
       <hr class="border-dark-muted" />
       <!---->
 
-      <StandardScraperSettings v-if="workerType == 'standard'" />
-
-      <ScrapingBeeSettings v-else-if="workerType == 'scraping_bee'" />
-
-      <OxylabsSettings v-else />
+      <div class="" role="proxy-config">
+        <StandardScraperSettings v-if="workerType == 'standard'" />
+        <ScrapingBeeSettings v-else-if="workerType == 'scraping_bee'" />
+        <OxylabsSettings v-else />
+      </div>
     </form>
   </div>
 </template>
