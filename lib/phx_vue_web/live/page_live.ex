@@ -1,6 +1,7 @@
 defmodule PhxVueWeb.PageLive do
   use PhxVueWeb, :live_view
   import PhxVueWeb.EventHandlers.HeaderEvents
+  import PhxVueWeb.EventHandlers.ParserEvents
 
   def mount(_params, _session, socket) do
 
@@ -9,11 +10,20 @@ defmodule PhxVueWeb.PageLive do
       total_tabs: 0,
       last_id: 0
     }
-    {:ok, assign(socket, tabs_state: tabs_state)}
+
+    new_socket =
+      socket
+      |> assign(header_tabs_state: tabs_state)
+      |> assign(parser_tabs_state: tabs_state)
+
+    {:ok, new_socket}
   end
 
-  def handle_event("add_tab", _value, socket) do
-    add_tab(socket)
+  def handle_event("add_header_tab", _value, socket) do
+    add_header_tab(socket)
+  end
+  def handle_event("add_parser_tab", _value, socket) do
+    add_parser_tab(socket)
   end
 
   def handle_event("change_active_tab", %{"id" => value}, socket) do

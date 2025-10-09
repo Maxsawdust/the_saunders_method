@@ -2,9 +2,9 @@ defmodule PhxVueWeb.EventHandlers.HeaderEvents do
   use PhxVueWeb, :live_view
   alias PhxVueWeb.Structs.{MethodSettings, Tab}
 
-  def add_tab(socket) do
+  def add_header_tab(socket) do
     socket =
-      update(socket, :tabs_state, fn state ->
+      update(socket, :header_tabs_state, fn state ->
         next_id = state.last_id + 1
 
         new_tab = %Tab{
@@ -32,7 +32,7 @@ defmodule PhxVueWeb.EventHandlers.HeaderEvents do
   def change_active_tab(value, socket) do
      # IO.puts(value)
     socket =
-      update(socket, :tabs_state, fn state ->
+      update(socket, :header_tabs_state, fn state ->
         int_value = String.to_integer(value)
         new_tabs_state =
           Enum.map(state.tabs, fn
@@ -52,7 +52,7 @@ defmodule PhxVueWeb.EventHandlers.HeaderEvents do
   def title_changed(value, socket) do
     IO.inspect(value)
     socket =
-      update(socket, :tabs_state, fn state ->
+      update(socket, :header_tabs_state, fn state ->
         updated_state =
           Enum.map(state.tabs, fn
             %{active: true} = tab ->
@@ -69,7 +69,7 @@ defmodule PhxVueWeb.EventHandlers.HeaderEvents do
 
   def http_method_changed(value, socket) do
     socket =
-      update(socket, :tabs_state, fn state ->
+      update(socket, :header_tabs_state, fn state ->
         updated_state =
          Enum.map(state.tabs, fn
           %{active: true} = tab ->
@@ -86,7 +86,7 @@ defmodule PhxVueWeb.EventHandlers.HeaderEvents do
   end
 
   def proxy_radio_changed(value, socket) do
-    socket = update(socket, :tabs_state, fn state ->
+    socket = update(socket, :header_tabs_state, fn state ->
       updated_state =
         Enum.map(state.tabs, fn
           %{active: true} = tab ->
@@ -103,7 +103,7 @@ defmodule PhxVueWeb.EventHandlers.HeaderEvents do
 
   def proxy_rack_toggled(value, socket) do
         socket =
-      update(socket, :tabs_state, fn state ->
+      update(socket, :header_tabs_state, fn state ->
         %{state | tabs:
           Enum.map(state.tabs, fn
             %{active: true} = tab ->

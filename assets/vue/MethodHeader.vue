@@ -5,7 +5,6 @@ import TabBody from './structural/TabBody.vue';
 
 import Tab from '../types/Tab';
 import { computed, provide } from 'vue';
-import Subtitle from './structural/Subtitle.vue';
 
 const props = defineProps<{
   tabs_state: { tabs: Tab[]; total_tabs: Number };
@@ -33,7 +32,7 @@ console.log(activeTab);
       <!---->
 
       <div
-        id="tab header"
+        id="tab-header"
         class="absolute top-[-40px] w-full h-10 gap-1 flex items-center"
       >
         <TabHeader
@@ -41,7 +40,7 @@ console.log(activeTab);
           :tab="tab"
           :key="index"
         />
-        <AddMethod />
+        <AddMethod click-event="add_header_tab" />
       </div>
       <div v-if="props.tabs_state.total_tabs == 0" class="text-center">
         <p class="">There are {{ props.tabs_state.total_tabs }} tabs here</p>

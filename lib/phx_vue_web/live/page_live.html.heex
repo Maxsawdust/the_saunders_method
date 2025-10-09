@@ -3,12 +3,13 @@
 >
   <div id="method-container" class="h-full w-full flex justify-center">
     <div
-      class="w-[70%] min-h-200 px-6 py-5 bg-light rounded-lg flex flex-col z-20 gap-7"
+      class="w-[70%] min-h-200 h-fit px-6 py-5 bg-light rounded-lg flex flex-col z-20 gap-7"
     >
       <.vue v-component="MethodHeader" v-socket={@socket}
-      tabs_state={@tabs_state} />
+      tabs_state={@header_tabs_state} />
       <!-- -->
-      <.vue v-component="MethodParser" v-socket={@socket} />
+      <.vue v-component="MethodParser" v-socket={@socket}
+      tabs_state={@parser_tabs_state}/>
     </div>
   </div>
 </main>
